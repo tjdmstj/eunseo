@@ -9,64 +9,184 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/music.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    
+
+    <!-- 글씨 색 통일: stylesheet.css 를 덮어쓰는 오버라이드 -->
+    <style>
+      body,
+      p,
+      td,
+      li,
+      h1, h2, h3,
+      .name,
+      .top-nav,
+      .site-id {
+        color: #1A2C51;
+      }
+
+      a,
+      a:link,
+      a:visited,
+      .top-nav a,
+      .site-id {
+        color: #1A2C51;
+        text-decoration: none;
+      }
+
+      /* 본문 안의 링크는 같은 색이므로 밑줄로 구분 */
+      p a,
+      td a,
+      li a {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      a:hover {
+        color: #1A2C51;
+        text-decoration: underline;
+      }
+
+      /* 프로필 사진 아래 링크 목록 (왼쪽 정렬) */
+      ul.profile-links {
+        list-style: none;
+        margin: 16px 0 0 0;
+        padding: 0;
+        text-align: left;
+      }
+
+      ul.profile-links li {
+        margin: 8px 0;
+        font-size: 0.95em;
+      }
+
+      /* 아이콘과 글자를 한 줄에 나란히 */
+      ul.profile-links li a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+
+      ul.profile-links li a:hover {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      /* 아이콘 크기 — 숫자만 바꾸면 커지고 작아집니다 */
+      ul.profile-links img.link-icon {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      /* 프로필 사진 — max-width 숫자로 크기 조절 */
+      img.profile-photo {
+        width: 100%;
+        max-width: 170px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+      }
+
+      /* 화면이 좁아지면 사진과 글이 위아래로 쌓이게 */
+      @media (max-width: 640px) {
+        td.intro-photo,
+        td.intro-text {
+          display: block;
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+      }
+    </style>
+
   </head>
 
   <body>
     <header class="top-nav">
-      <a class="site-id" href="https://github.com/tjdmstj/">Eunseo's Page</a>
-      <nav class="top-links">
-        <a href="https://github.com/tjdmstj">GitHub</a>
-        <a href="https://www.linkedin.com/in/eunseo-seo-839188373/">LinkedIn</a>
-        <a href="mailto:jeo0534@cau.ac.kr">Email</a>
-      </nav>
+      Eunseo's Page
     </header>
     <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
+              <!-- 왼쪽: 프로필 사진 + 링크 -->
+              <td class="intro-photo" style="padding:3%;width:30%;max-width:30%;vertical-align:top;text-align:left">
+                <a href="images/profile.jpg"><img class="profile-photo hoverZoomLink" alt="profile photo" src="images/profile.jpg"></a>
+                <ul class="profile-links">
+                  <li>
+                    <a href="https://github.com/tjdmstj">
+                      <img class="link-icon" src="images/icon-github.png" alt="">
+                      <span>GitHub</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.linkedin.com/in/eunseo-seo-839188373/">
+                      <img class="link-icon" src="images/icon-linkedin.png" alt="">
+                      <span>LinkedIn</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:jeo0534@cau.ac.kr">
+                      <img class="link-icon" src="images/icon-email.png" alt="">
+                      <span>Email</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://velog.io/@jeo0534">
+                      <img class="link-icon" src="images/icon-velog.png" alt="">
+                      <span>velog</span>
+                    </a>
+                  </li>
+                </ul>
+              </td>
+              <!-- 오른쪽: 이름 + 소개글 -->
+              <td class="intro-text" style="padding:3%;width:70%;vertical-align:middle">
+                <p class="name" style="text-align: left;">
                   Eunseo Seo
                 </p>
                 <p>
-		Hi! I am an incoming M.S. student in the <a href="https://cg.postech.ac.kr/">Computer Graphics Lab</a> at <a href="https://www.postech.ac.kr/kor/index.do">POSTECH</a>, advised by <a href="https://cg.postech.ac.kr/leesy/">Prof. Seungyong Lee</a>.
-		<br>
-		I am currently pursuing a B.S. degree in Artificial Intelligence at <a href="https://www.ewha.ac.kr/ewha/index.do">Ewha Womans University</a>.
-		<br>
-    <br>
-		My research interests include autonomous driving, 3D scene representation. I am particularly interested in modeling dynamic driving scenes using Gaussian Splatting and developing world models for autonomous driving.
+                I am an M.S. student in Artificial Intelligence at <a href="https://www.cau.ac.kr/index.do" style="color:#4A6FA5">Chung-Ang University</a>, 
+                <br>
+                and a member of the <a href="https://sites.google.com/view/scai-lab/" style="color:#4A6FA5"><b>SCAI Lab</b></a> (Speech &amp; Conversational AI), advised by Prof. J. W. Yoon. 
                 </p>
+                <p style="margin-bottom:6px">
+                My research interests include:
+                </p>
+                <!-- 분야를 추가할 때는 <li> 줄을 복사하면 됩니다 -->
+                <ul style="margin-top:0">
+                  <li>Speech Synthesis</li>
+                  <li>Large Language Models</li>
+                  <li>Fake Audio Detection</li>
+                </ul>
               </td>
-              <td style="padding:2.5%;width:37%;max-width:37%">
-                <a href="images/es.jpg"><img style="width:100%;max-width:100%;aspect-ratio:1 / 1;object-fit: cover; border-radius: 50%;" alt="profile photo" src="images/profile.JPG" class="hoverZoomLink"></a>
-              </td>
+
             </tr>
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
               <td style="padding:16px;width:100%;vertical-align:middle">
-                <h2>Education</h2>
+                <h2><b>Education</b></h2>
                 <table style="width:100%;border:0px;border-spacing:0px 16px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
                   <tr>
                     <td style="width:28%;vertical-align:top">
-                      Starting Feb. 2027
+                      Mar. 2025 - Present
                     </td>
                     <td style="width:72%;vertical-align:top">
-                      <a href="https://www.postech.ac.kr/kor/index.do">POSTECH</a>, Pohang, South Korea
+                      <a href="https://www.cau.ac.kr/index.do">Chung-Ang University</a>, Seoul, South Korea
                       <br>
-                      M.S. in <a href="https://cse.postech.ac.kr/csepostech/index.do">Computer Science &amp; Engineering</a>
+                      M.S. in Artificial Intelligence
                     </td>
                   </tr>
                   <tr>
                     <td style="width:28%;vertical-align:top">
-                      Mar. 2023 - Feb. 2027
+                      Mar. 2020 - Feb. 2025
                     </td>
                     <td style="width:72%;vertical-align:top">
-                      <a href="https://www.ewha.ac.kr/ewha/index.do">EWHA Womans University</a>, Seoul, South Korea
+                      <a href="https://www.cau.ac.kr/index.do">Chung-Ang University</a>, Seoul, South Korea
                       <br>
-                      B.S. in <a href="https://cmsfox.ewha.ac.kr/ai/index.do">Artificial Intelligence</a>
+                      B.S. in Applied Statistics
                     </td>
                   </tr>
                 </tbody></table>
@@ -74,61 +194,20 @@
             </tr>
             <tr>
               <td style="padding:16px;width:100%;vertical-align:middle">
-                <h2>Experiences</h2>
+                <h2><b>Publication</b></h2>
                 <table style="width:100%;border:0px;border-spacing:0px 24px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
                   <tr>
                     <td style="width:28%;vertical-align:top">
-                      Jun. 2026 - Present
+                      EMNLP 2026 main
                     </td>
                     <td style="width:72%;vertical-align:top">
-                      <a href="https://cg.postech.ac.kr/">Computer Graphics Lab</a>, <a href="https://www.postech.ac.kr/kor/index.do">POSTECH</a>, Pohang, South Korea
+                      <strong>KoALa-Bench: Evaluating Large Audio Language Models on Korean Speech Understanding and Faithfulness</strong>
+                      <br><br>
+                      Jinyoung Kim*, Hyeongsoo Lim*, <b>Eunseo Seo*</b>, Minho Jang*, Keunwoo Choi, Seungyoun Shin, Jiwon Yoon†
                       <br>
-                      <em>Undergraduate Research Intern</em>
-                      <ul>
-                        <li>Advisor: <a href="https://cg.postech.ac.kr/leesy/">Prof. Seungyong Lee</a></li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width:28%;vertical-align:top">
-                      Jan. 2026 - Mar. 2026
-                    </td>
-                    <td style="width:72%;vertical-align:top">
-                      <a href="https://ircv.hanyang.ac.kr/">IRCV Lab</a>, <a href="https://www.hanyang.ac.kr/web/www/home">Hanyang University</a>, Seoul, South Korea
-                      <br>
-                      <em>Undergraduate Research Intern</em>
-                      <ul>
-                        <li>Advisor: <a href="https://soonminhwang.github.io/">Prof. Soonmin Hwang</a></li>
-                        <li>Topic: End-to-End autonomous driving with Knowledge Distillation, driving-scene 3D Gaussian Splatting, and multi-sensor dataset construction</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width:28%;vertical-align:top">
-                      Jun. 2025 - Aug. 2025
-                    </td>
-                    <td style="width:72%;vertical-align:top">
-                      <a href="https://cg.postech.ac.kr/">Computer Graphics Lab</a>, <a href="https://www.postech.ac.kr/kor/index.do">POSTECH</a>, Pohang, South Korea
-                      <br>
-                      <em>Undergraduate Research Intern</em>
-                      <ul>
-                        <li>Advisor: <a href="https://cg.postech.ac.kr/leesy/">Prof. Seungyong Lee</a></li>
-                        <li>Topic: Geometry-Aware Regularization for Enhanced 3D Gaussian Splatting</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width:28%;vertical-align:top">
-                      Mar. 2024 - Jan. 2025
-                    </td>
-                    <td style="width:72%;vertical-align:top">
-                      <a href="https://pai.ewha.ac.kr/">PAI Lab</a>, <a href="https://www.ewha.ac.kr/ewha/index.do">EWHA Womans University</a>, Seoul, South Korea
-                      <br>
-                      <em>Undergraduate Research Intern</em>
-                      <ul>
-                        <li>Advisor: <a href="https://junhyug.github.io/">Prof. Junhyug Noh</a></li>
-                        <li>Topic: Gait Re-Identification</li>
-                      </ul>
+                      <small>*Equal contribution, †Corresponding author</small>
+                      <br><br>
+                      <a href="https://arxiv.org/abs/2604.19782" style="color:#4A6FA5">paper</a> / <a href="https://huggingface.co/datasets/scailaboratory/KoALA" style="color:#4A6FA5">huggingface</a>
                     </td>
                   </tr>
                 </tbody></table>
@@ -136,7 +215,98 @@
             </tr>
             <tr>
               <td style="padding:16px;width:100%;vertical-align:middle">
-                <h2>Publication</h2>
+                <h2><b>Experiences</b></h2>
+                <table style="width:100%;border:0px;border-spacing:0px 24px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+                  <tr>
+                    <td style="width:28%;vertical-align:top">
+                      Mar. 2025 
+                      <br> - Present
+                    </td>
+                    <td style="width:72%;vertical-align:top">
+                      <a href="https://sites.google.com/view/scai-lab/" style="color:#4A6FA5"><b>SCAI Lab</b></a>, <a href="https://www.cau.ac.kr/index.do">Chung-Ang University</a>, Seoul, South Korea
+                      <br>
+                      <em>M.S. Student</em>
+                      <ul>
+                        <li>Advisor: Prof. J. W. Yoon</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:28%;vertical-align:top">
+                      Jul. 2023 
+                      <br> - Jan. 2025
+                    </td>
+                    <td style="width:72%;vertical-align:top">
+                      <a href="https://www.deepdaiv.com/" style="color:#28468C"><b>deep daiv. </b></a>, Seoul, South Korea
+                      <br>
+                      <em>Team Member</em>
+                      <ul>
+                        <li>Joined <u>six project tracks</u> over four semesters: </li>
+                        <ul>
+                          <li>Recommender Systems (23 Summer)</li>
+                          <li>NLP (23 Fall)</li>
+                          <li>Deep Learning Architecture (24 Spring)</li>
+                          <li>Speech (24 Winter, Summer, Fall)</li>
+                        </ul>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:28%;vertical-align:top">
+                      Aug. 2023 
+                      <br> - Aug. 2024
+                    </td>
+                    <td style="width:72%;vertical-align:top">
+                      <a href="https://www.bitamin.ai.kr/" style="color:#D2461E"><b>BITAmin</b></a>, Seoul, South Korea
+                      <br>
+                      <em>Team Member</em>
+                    </td>
+                  </tr>
+                </tbody></table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:16px;width:100%;vertical-align:middle">
+                <h2><b>Projects</b></h2>
+                <table style="width:100%;border:0px;border-spacing:0px 16px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+                  <tr>
+                    <td style="width:28%;vertical-align:top">
+                      Undergraduate
+                    </td>
+                    <td style="width:72%;vertical-align:top">
+                      <!-- 프로젝트를 추가할 때는 <li> 블록을 복사하세요 -->
+                      <ul style="margin-top:0">
+                        <li>
+                          <strong>3DGS_DIET</strong> &mdash; Computer Vision
+                          <br>
+                          <a href="https://deep-daiv-computer-vision.github.io/3DGS_DIET/" style="color:#4A6FA5">project page</a> / <a href="https://github.com/deep-daiv-computer-vision/3DGS_DIET" style="color:#4A6FA5">github</a>
+                        </li>
+                        <br>
+                        <li>
+                          <strong>Resume Analysis with Prompt Engineering</strong> &mdash; NLP
+                          <br>
+                          <a href="https://github.com/tjdmstj/BITAMIN_RESUME" style="color:#4A6FA5">github</a>
+                        </li>
+                        <br>
+                        <li>
+                          <strong>Identifying My Own Voice</strong> &mdash; Audio
+                          <br>
+                          <a href="https://github.com/Jin1025/Timbre2Vec" style="color:#4A6FA5">github</a>
+                        </li>
+                        <br>
+                        <li>
+                          <strong>Virtual Casting from Generated Synopses</strong> &mdash; NLP
+                        </li>
+                        <br>
+                        <li>
+                          <strong>Book-OST</strong> &mdash; Recommender Systems
+                          <br>
+                          <a href="https://github.com/sigorzav-jong/Book-ost" style="color:#4A6FA5">github</a>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody></table>
               </td>
             </tr>
           </tbody></table>
