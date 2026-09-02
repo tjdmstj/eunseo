@@ -107,3 +107,38 @@ span.highlight {
     display: inline-block;
     border-radius: 10px;
 }
+
+/* summary 기본 삼각형 마커 제거 */
+details.collapsible > summary {
+  cursor: pointer;
+  list-style: none;          /* Firefox 등 */
+  outline: none;
+}
+details.collapsible > summary::-webkit-details-marker {
+  display: none;             /* Chrome / Safari */
+}
+
+/* summary 안의 제목은 h2 그대로 쓰되, 오른쪽에 화살표를 붙임 */
+details.collapsible > summary h2 {
+  display: inline-block;
+}
+details.collapsible > summary h2::after {
+  content: "\25B8";          /* ▸ 접힌 상태 */
+  font-size: 0.75em;
+  margin-left: 10px;
+  vertical-align: middle;
+  opacity: 0.6;
+}
+details.collapsible[open] > summary h2::after {
+  content: "\25BE";          /* ▾ 펼친 상태 */
+}
+
+details.collapsible > summary:hover h2::after {
+  opacity: 1;
+}
+
+/* 키보드 탭 이동 시 초점 표시 */
+details.collapsible > summary:focus-visible h2 {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
